@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wednesdays</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Subject</th>
+      <th>Link</th>
+      <th>Prof</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wednesdays.each do |wednesday| %>
+      <tr>
+        <td><%= wednesday.from.strftime("%I:%M%p") %></td>
+        <td><%= wednesday.to.strftime("%I:%M%p") %></td>
+        <td><%= wednesday.Subject %></td>
+        <td><%= link_to wednesday.link.split("/")[4], wednesday.link, target:"_blank" %></td>
+        <td><%= wednesday.Prof %></td>
+        <td><%= link_to 'Show', wednesday %></td>
+        <td><%= link_to 'Edit', edit_wednesday_path(wednesday) %></td>
+        <td><%= link_to 'Destroy', wednesday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wednesday', new_wednesday_path %>

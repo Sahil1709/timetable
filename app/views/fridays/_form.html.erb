@@ -1,0 +1,42 @@
+<%= form_with(model: friday) do |form| %>
+  <% if friday.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(friday.errors.count, "error") %> prohibited this friday from being saved:</h2>
+
+      <ul>
+        <% friday.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :from %>
+    <%= form.time_select :from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to %>
+    <%= form.time_select :to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Subject %>
+    <%= form.text_field :Subject %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Prof %>
+    <%= form.text_field :Prof %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

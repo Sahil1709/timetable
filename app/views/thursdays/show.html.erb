@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @thursday.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @thursday.to %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @thursday.Subject %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @thursday.link %>
+</p>
+
+<p>
+  <strong>Prof:</strong>
+  <%= @thursday.Prof %>
+</p>
+
+<%= link_to 'Edit', edit_thursday_path(@thursday) %> |
+<%= link_to 'Back', thursdays_path %>

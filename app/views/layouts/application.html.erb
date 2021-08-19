@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timetable</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="container">
+  <h1 class="display-2 text-center">SEM V</h1>
+  <% if user_signed_in? %>
+  
+      
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Days
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+    <li><a href="/mondays" class="dropdown-item <% if request.path == mondays_path %> active <% end %>">Mondays</a></li>
+    <li>
+    <%if request.path == tuesdays_path %>
+      <%= link_to 'Tuesday', tuesdays_path, class:"dropdown-item active" %>
+    <%else%>
+      <%= link_to 'Tuesday', tuesdays_path, class:"dropdown-item" %>
+    <%end%>
+    </li>
+    <li>
+    <%if request.path == wednesdays_path %>
+      <a href="/wednesdays" class="dropdown-item active">Wednesday</a>
+    <%else%>
+      <a href="/wednesdays" class="dropdown-item">Wednesday</a>
+    <%end%>
+    </li>
+    <li><a href="/thursdays" class="dropdown-item <% if request.path == thursdays_path %> active <% end %>">Thursday</a></li>
+    <li><a href="/fridays" class="dropdown-item <% if request.path == fridays_path %> active <% end %>">Friday</a></li>
+  </ul>
+
+<%= link_to 'Logout', destroy_user_session_path, class:"btn btn-primary", method: :delete %>
+</div>
+<% else %>
+      <%= link_to 'Log In', new_user_session_path, class:"btn btn-primary btn-lg px-4 me-sm-3" %>
+
+      <% end %>
+    <%= yield %>
+    </div>
+  </body>
+</html>
